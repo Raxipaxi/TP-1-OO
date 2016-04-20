@@ -1,6 +1,4 @@
-import java.sql.Time;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -32,7 +30,7 @@ public class Operador {
 
         PrendaTemporada p = new PrendaTemporada(codigo, nombre, itemMateriales, cantidad, estacion, porcentaje);
 
-        if (BuscarPrenda(codigo) >= 0)
+        if (BuscarPrenda(codigo) == -1)
             Prendas.add(p);
     }
 
@@ -69,24 +67,11 @@ public class Operador {
 
     }
 
-    public float RealizarVenta(int codigo, int cantidad) {
-        try {
-            int i = BuscarPrenda(codigo);
-            float precio = 0;
-            if (i >= 0) {
-                if (Prendas.elementAt(i).cantidad > 0) {
+    public void RealizarVenta(Vector<ItemFactura> listaProductos) {
+        Factura f = new Factura(Facturas.size(), Calendar.getInstance().getTime(), listaProductos);
 
-                    Prenda temp = Prendas.elementAt(i);
-                    // precio=Cal
-                    return precio;
-                }
+        //TODO: Reducir Stock;
 
-            }
-
-        } catch (Exception e) {
-            System.out.println("No hay prenda en stock");
-        }
-        return 0;
     }
 
     public void ControlStock() {

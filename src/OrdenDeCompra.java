@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ public class OrdenDeCompra {
 
     public OrdenDeCompra(Material material) {
         this.material = material;
-        this.date = date;
+        date = Calendar.getInstance().getTime();
     }
 
     public void setMaterial(Material material) {
