@@ -6,8 +6,8 @@ import java.util.Vector;
 
 public class Operador {
     public Vector<Prenda> Prendas;
-    public Vector<Material>Materiales;
-    public Vector<Factura>Facturas;
+    public Vector<Material> Materiales;
+    public Vector<Factura> Facturas;
 
     public Operador() {
 
@@ -18,59 +18,73 @@ public class Operador {
 
     }
 
-    private void cargaInicial()
-    {
+    private void cargaInicial() {
         ///TODO terminar la carga inicial
 
     }
 
     public void AltaPrendaTemporada(int codigo, String nombre, Vector<ItemMaterial> itemMateriales,
-                                    int cantidad, String estacion, float porcentaje){
-        PrendaTemporada p = new PrendaTemporada(codigo,nombre,itemMateriales,cantidad,estacion,porcentaje);
+                                    int cantidad, String estacion, float porcentaje) {
+        PrendaTemporada p = new PrendaTemporada(codigo, nombre, itemMateriales, cantidad, estacion, porcentaje);
 
-        if(BuscarPrenda(codigo)>=0)
+        if (BuscarPrenda(codigo) >= 0)
             Prendas.add(p);//con esto ganaste papa
 
 
     }
 
-    public void BajaPrenda(int codigo){
-      try{
-          Prendas.removeElementAt(BuscarPrenda(codigo));
-      }
-      catch (Exception e)
-      {
-          System.out.println("No existe la prenda a borrar");
-      }
+    public void BajaPrenda(int codigo) {
+        try {
+            Prendas.removeElementAt(BuscarPrenda(codigo));
+        } catch (Exception e) {
+            System.out.println("No existe la prenda a borrar");
+        }
 
     }
 
-    private int BuscarPrenda(int codigo){
+    private int BuscarPrenda(int codigo) {
 
-        for ( int i=0; i<Prendas.size();i++)
-        {
-            if (Prendas.elementAt(i).codigo == codigo)
-            {
+        for (int i = 0; i < Prendas.size(); i++) {
+            if (Prendas.elementAt(i).codigo == codigo) {
                 return i;
             }
         }
 
         return -1;
     }
-    private void ModificarPrendaTemporada(int codigo, String nombre, Vector<ItemMaterial> itemMateriales,
-                                          int cantidad, String estacion, float porcentaje){
-        PrendaTemporada p = new PrendaTemporada(codigo,nombre,itemMateriales,cantidad,estacion,porcentaje);
 
-        try{
-            Prendas.set(BuscarPrenda(codigo),p);
-        }
-        catch (Exception e)
-        {
+    private void ModificarPrendaTemporada(int codigo, String nombre, Vector<ItemMaterial> itemMateriales,
+                                          int cantidad, String estacion, float porcentaje) {
+        PrendaTemporada p = new PrendaTemporada(codigo, nombre, itemMateriales, cantidad, estacion, porcentaje);
+
+        try {
+            Prendas.set(BuscarPrenda(codigo), p);
+        } catch (Exception e) {
             System.out.println("No existe la prenda a modificar");
         }
 
     }
 
+    public float RealizarVenta(int codigo, int cantidad) {
+        try {
+            int i = BuscarPrenda(codigo);
+            float precio = 0;
+            if (i >= 0) {
+                if (Prendas.elementAt(i).cantidad > 0) {
 
+                    Prenda temp = Prendas.elementAt(i);
+                    // precio=Cal
+                    return precio;
+                }
 
+            }
+
+        } catch (Exception e) {
+            System.out.println("No hay prenda en stock");
+        }
+        return 0;
+    }
 }
+
+
+
