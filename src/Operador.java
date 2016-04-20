@@ -71,6 +71,27 @@ public class Operador {
 
     }
 
+    public float RealizarVenta(int codigo, int cantidad)
+    {
+        try {
+            int i = BuscarPrenda(codigo);
+            float precio=0;
+            if (i >= 0) {
+                if (Prendas.elementAt(i).cantidad > 0) {
+
+                    Prenda temp = Prendas.elementAt(i);
+                   // precio=Cal
+                    return precio;
+                }
+
+            }
+        }
+        catch (Exception e)
+        {
+            System.out.println("No hay prenda en stock");
+        }
+
+    }
 
 
 }

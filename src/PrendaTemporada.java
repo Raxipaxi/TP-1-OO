@@ -13,4 +13,10 @@ public class PrendaTemporada extends  Prenda {
         this.estacion = estacion;
         this.porcentaje = porcentaje;
     }
+
+    public float CalculoPrecio(String estacion, float porcentaje){
+        float precio = 0;
+
+        return precio;
+    }
 }
