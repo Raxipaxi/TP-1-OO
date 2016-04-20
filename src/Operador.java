@@ -24,10 +24,52 @@ public class Operador {
 
     }
 
-    public void AltaPrenda(Prenda nueva){
+    public void AltaPrendaTemporada(int codigo, String nombre, Vector<ItemMaterial> itemMateriales,
+                                    int cantidad, String estacion, float porcentaje){
+        PrendaTemporada p = new PrendaTemporada(codigo,nombre,itemMateriales,cantidad,estacion,porcentaje);
+
+        if(!Prendas.contains(p))
+            Prendas.add(p);//con esto ganaste papa
+
 
     }
 
+    public void BajaPrenda(int codigo){
+      try{
+          Prendas.removeElementAt(BuscarPrenda(codigo));
+      }
+      catch (Exception e)
+      {
+          System.out.println("No existe la prenda a borrar");
+      }
+
+    }
+
+    private int BuscarPrenda(int codigo){
+
+        for ( int i=0; i<Prendas.size();i++)
+        {
+            if (Prendas.elementAt(i).codigo == codigo)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+    private void ModificarPrendaTemporada(int codigo, String nombre, Vector<ItemMaterial> itemMateriales,
+                                          int cantidad, String estacion, float porcentaje){
+        PrendaTemporada p = new PrendaTemporada(codigo,nombre,itemMateriales,cantidad,estacion,porcentaje);
+
+        try{
+            Prendas.set(BuscarPrenda(codigo),p);
+        }
+        catch (Exception e)
+        {
+            System.out.println("No existe la prenda a modificar");
+        }
+
+    }
 
 
 
