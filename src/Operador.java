@@ -28,7 +28,7 @@ public class Operador {
                                     int cantidad, String estacion, float porcentaje){
         PrendaTemporada p = new PrendaTemporada(codigo,nombre,itemMateriales,cantidad,estacion,porcentaje);
 
-        if(!Prendas.contains(p))
+        if(BuscarPrenda(codigo)>=0)
             Prendas.add(p);//con esto ganaste papa
 
 
