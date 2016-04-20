@@ -1,3 +1,6 @@
+import java.sql.Time;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -5,32 +8,32 @@ import java.util.Vector;
  */
 
 public class Operador {
+
     public Vector<Prenda> Prendas;
     public Vector<Material> Materiales;
     public Vector<Factura> Facturas;
 
     public Operador() {
-
         Prendas = new Vector<Prenda>();
         Materiales = new Vector<Material>();
         cargaInicial();
-
-
     }
 
     private void cargaInicial() {
-        ///TODO terminar la carga inicial
+        Material m = new Material(001, 10, "Algodon", "Algodonera Santa Fe", 3, 50, 50);
+        Material n = new Material(002, 213, "Lycra", "Todo Telas", 50, 40, 50);
 
+        Materiales.add(m);
+        Materiales.add(n);
     }
 
     public void AltaPrendaTemporada(int codigo, String nombre, Vector<ItemMaterial> itemMateriales,
                                     int cantidad, String estacion, float porcentaje) {
+
         PrendaTemporada p = new PrendaTemporada(codigo, nombre, itemMateriales, cantidad, estacion, porcentaje);
 
         if (BuscarPrenda(codigo) >= 0)
-            Prendas.add(p);//con esto ganaste papa
-
-
+            Prendas.add(p);
     }
 
     public void BajaPrenda(int codigo) {
@@ -55,6 +58,7 @@ public class Operador {
 
     private void ModificarPrendaTemporada(int codigo, String nombre, Vector<ItemMaterial> itemMateriales,
                                           int cantidad, String estacion, float porcentaje) {
+
         PrendaTemporada p = new PrendaTemporada(codigo, nombre, itemMateriales, cantidad, estacion, porcentaje);
 
         try {
@@ -83,6 +87,20 @@ public class Operador {
             System.out.println("No hay prenda en stock");
         }
         return 0;
+    }
+
+    public void ControlStock() {
+        for (int i = 0; i < Materiales.size(); i++) {
+            Material m = Materiales.elementAt(i);
+
+            if (m.getStock() <= m.getPuntoDePedido())
+                GenerarOC(m);
+        }
+    }
+
+    private void GenerarOC(Material m)
+    {
+        OrdenDeCompra oc = new OrdenDeCompra(m);
     }
 }
 

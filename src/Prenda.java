@@ -15,4 +15,38 @@ public abstract class Prenda {
         ItemMateriales = itemMateriales;
         this.cantidad = cantidad;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Vector<ItemMaterial> getItemMateriales() {
+        return ItemMateriales;
+    }
+
+    public void setItemMateriales(Vector<ItemMaterial> itemMateriales) {
+        ItemMateriales = itemMateriales;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public abstract float CalculoPrecio();
 }
