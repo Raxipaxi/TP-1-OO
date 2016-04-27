@@ -32,7 +32,7 @@ public class Operador {
 
         PrendaTemporada p = new PrendaTemporada(codigo, nombre, itemMateriales, cantidad, estacion, porcentaje);
 
-        if (BuscarPrenda(codigo) >= 0)
+        if (BuscarPrenda(codigo) == -1)
             Prendas.add(p);
     }
 
